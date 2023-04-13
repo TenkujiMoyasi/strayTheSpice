@@ -9,17 +9,22 @@
 </head>
 <body>
   <main class="main">
-    <ul>
+    <ul class="gameStats">
       <li id="turnCounter">TURN:00</li>
       <li id="deckAmount">DECK:10</li>
       <li id="handAmount">HAND:0</li>
       <li id="trashAmount">TRASH:0</li>
     </ul>
-    <button id="turnStartButton">TURN START</button>
-    <button id="drawButton">DRAW</button>
-    <button id="trashButton">toTRASH</button>
-    <button id="turnEndButton">TURN END</button>
+    <ul id="yourHands">
+    </ul>
+    <div class="buttons">
+      <button id="turnStartButton">TURN START</button>
+      <button id="drawButton">DRAW</button>
+      <button id="trashButton">toTRASH</button>
+      <button id="turnEndButton">TURN END</button>
+    </div>
   </main>
-  <script type="text/javascript" src="./js/main.js"></script>
+  <script type="module" src="./js/cardData.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>

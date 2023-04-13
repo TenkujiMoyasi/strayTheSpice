@@ -1,0 +1,38 @@
+.main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #ccc;
+}
+
+.gameStats {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  gap: 20px;
+  list-style: none;
+}
+
+#yourHands {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  list-style: none;
+  .card {
+    width: 15%;
+    aspect-ratio: 1/1.5;
+    border: 1px solid #000;
+    background: #999;
+    &:hover {
+      position: relative;
+      top: -20px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
