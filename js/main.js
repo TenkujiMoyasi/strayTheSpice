@@ -45,11 +45,26 @@ function deckShuffle(deck) {
 }
 
 //現在の手札に合わせてカードの内容を更新する
-function firstHands() {
-  console.log(domHands);
+function updateHands() {
+  // console.log(domHands);
   domHands.forEach((e, index) => {
     e.textContent = hands[index];
   });
+}
+
+//DOM要素のカードを生成して手札に加える
+function createDomCard() {
+  const newCard = document.createElement("li");
+  newCard.classList.add("card");
+  newCard.textContent = "name";
+  yourHands.appendChild(newCard);
+  domHands = [...document.querySelectorAll(".card")];
+  updateHands();
+}
+//DOM要素のカードを手札から削除してDOM要素も消す
+function deleteDomCard() {
+  yourHands.lastElementChild.remove();
+  updateHands();
 }
 
 // デッキトップからカードをドローする
@@ -57,11 +72,7 @@ function drawCards(n) {
   if (n <= mainDeck.length) {
     for (let i = 0; i < n; i++) {
       hands.splice(hands.length, 0, ...(mainDeck.splice(0,1)))
-      const newCard = document.createElement("li");
-      newCard.classList.add("card");
-      newCard.textContent = "name";
-      yourHands.appendChild(newCard);
-      domHands = [...document.querySelectorAll(".card")];
+      createDomCard()
     }
   }
   else
@@ -87,6 +98,7 @@ function toTrash(n) {
   if (hands.length > 0) {
     trash.splice(trash.length, 0, ...(trash.splice(0, trash.length - 1, ...hands.splice(n, 1))));
   }
+  deleteDomCard();
   countAmount();
 }
 
@@ -139,6 +151,5 @@ deckShuffle(mainDeck);
 console.log(`最終シャッフル後のデッキ内容[${mainDeck}]`);
 drawCards(3);
 console.log(`初手[${hands}]`);
-firstHands();
 
 countAmount();
